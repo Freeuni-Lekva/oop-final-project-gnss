@@ -17,6 +17,15 @@ public class MultiSelectQuestion extends Question {
     private final List<String> possibleAnswers;
     private final Set<String> answers;
 
+    /**
+     * Constructs a multiple-select question where the user can choose multiple correct answers.
+     *
+     * @param id              The unique identifier of the question.
+     * @param typeId          The type identifier used to classify the question (e.g., for rendering or processing).
+     * @param question        The question prompt or text shown to the user.
+     * @param possibleAnswers A list of all answer choices that the user can select from.
+     * @param answers         A set of correct answers that will be used for scoring.
+     */
     public MultiSelectQuestion(int id, int typeId, String question,
                                List<String> possibleAnswers, Set<String> answers) {
         super(id, typeId, question);

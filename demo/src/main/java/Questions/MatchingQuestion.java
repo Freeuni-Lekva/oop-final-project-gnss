@@ -12,6 +12,16 @@ public class MatchingQuestion extends Question {
     protected List<String> rightItems;
     protected Map<String, String> correctMatches;
 
+    /**
+     * Constructs a matching question where the user must pair items from two lists.
+     *
+     * @param id             The unique identifier for the question.
+     * @param typeId         The type ID used to classify this question.
+     * @param question       The question prompt shown to the user.
+     * @param leftItems      The list of items on the left side to be matched.
+     * @param rightItems     The list of items on the right side that should be matched to left items.
+     * @param correctMatches A map of correct matches, where each key from leftItems maps to its correct rightItem.
+     */
     public MatchingQuestion(int id, int typeId, String question, List<String> leftItems, List<String> rightItems, Map<String, String> correctMatches) {
         super(id, typeId, question);
         this.correctMatches = correctMatches;
