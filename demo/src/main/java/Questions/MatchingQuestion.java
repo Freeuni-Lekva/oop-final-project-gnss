@@ -76,4 +76,10 @@ public class MatchingQuestion extends Question {
     public List<String> getRightItems() {
         return rightItems;
     }
+
+    public void setLeftItems(List<String> leftItems) { this.leftItems = leftItems; }
+
+    public void setRightItems(List<String> rightItems) { this.rightItems = rightItems; }
+
+    public void setCorrectMatches(Map<String, String> correctMatches) { this.correctMatches = correctMatches; }
 }

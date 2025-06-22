@@ -14,8 +14,8 @@ import java.util.Set;
     (3) Stanford will be going to a bowl game this year
 */
 public class MultiSelectQuestion extends Question {
-    private final List<String> possibleAnswers;
-    private final Set<String> answers;
+    private List<String> possibleAnswers;
+    private Set<String> answers;
 
     /**
      * Constructs a multiple-select question where the user can choose multiple correct answers.
@@ -53,15 +53,21 @@ public class MultiSelectQuestion extends Question {
     */
     @Override
     public int getScore(String answer) {
-        if (answer == null || answer.isEmpty()) return 0;
+        throw new UnsupportedOperationException("Use getScore(Set<String>) instead.");
+    }
 
-        String[] userAnswers = answer.trim().toUpperCase().split("\\s*,\\s*");
+    public int getScore(Set<String> userAnswers) {
+        if (answers == null) return 0;
+
         int score = 0;
-
-        for (String current : userAnswers) {
-            if (this.answers.contains(current)) score++;
+        for (String currentAnswer : userAnswers) {
+            if (this.answers.contains(currentAnswer)) score++;
         }
 
         return score;
     }
+
+    public void setPossibleAnswers(List<String> possibleAnswers) { this.possibleAnswers = possibleAnswers; }
+
+    public void setAnswers(Set<String> answers) { this.answers = answers; }
 }
