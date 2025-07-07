@@ -21,7 +21,7 @@ public class MultipleChoiceAnswer extends Question {
      * @param possibleAnswers    a list of possible answer options
      * @param correctAnswerIndex the index (1-based) of the correct answer in the list
      */
-    public MultipleChoiceAnswer(int id, int question_type_id, String question, List<String> possibleAnswers, int correctAnswerIndex) {
+    public MultipleChoiceAnswer(int id, String question_type_id, String question, List<String> possibleAnswers, int correctAnswerIndex) {
         super(id, question_type_id, question);
         this.possibleAnswers = possibleAnswers;
         this.correctAnswerIndex = correctAnswerIndex - 1;

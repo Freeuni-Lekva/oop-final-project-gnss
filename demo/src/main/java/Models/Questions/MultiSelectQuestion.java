@@ -26,7 +26,7 @@ public class MultiSelectQuestion extends Question {
      * @param possibleAnswers A list of all answer choices that the user can select from.
      * @param answers         A set of correct answers that will be used for scoring.
      */
-    public MultiSelectQuestion(int id, int typeId, String question,
+    public MultiSelectQuestion(int id, String typeId, String question,
                                List<String> possibleAnswers, Set<String> answers) {
         super(id, typeId, question);
         this.possibleAnswers = possibleAnswers;

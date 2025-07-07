@@ -22,7 +22,7 @@ public class MultiSelectQuestionTest {
     // Simple and Default initialization of instance before each test call
     @BeforeEach
     public void init() {
-        question = new MultiSelectQuestion(1, 1, "please mark US presidents",
+        question = new MultiSelectQuestion(1, "MultiSelected", "please mark US presidents",
                                            null, null);
     }
 

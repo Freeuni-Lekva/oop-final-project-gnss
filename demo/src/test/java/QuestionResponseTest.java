@@ -12,7 +12,7 @@ public class QuestionResponseTest {
     @Test
     void testEmpty(){
         Set<String> correctAnswers = new HashSet<>();
-        QuestionResponse question = new QuestionResponse(77, 1, "Empty set?", correctAnswers , 1);
+        QuestionResponse question = new QuestionResponse(77, "QuestionResponse", "Empty set?", correctAnswers , 1);
         assertEquals(0 , question.getScore("yes"));
         assertNull(question.getCorrectAnswers());
     }
@@ -25,7 +25,7 @@ public class QuestionResponseTest {
         Set<String> fakeAnswers = new HashSet<>();
         fakeAnswers.add("PF");
 
-        QuestionResponse question = new QuestionResponse(1, 1, "What is Java?", correctAnswers , 5);
+        QuestionResponse question = new QuestionResponse(1, "QuestionResponse", "What is Java?", correctAnswers , 5);
 
         assertEquals(5, question.getScore("Java"));
         assertNotEquals(question.getCorrectAnswers(), fakeAnswers);
@@ -37,7 +37,7 @@ public class QuestionResponseTest {
         correctAnswers.add("four");
         correctAnswers.add("FOUR!");
 
-        QuestionResponse question = new QuestionResponse(2, 1, "2 + 2 = ?", correctAnswers, 2);
+        QuestionResponse question = new QuestionResponse(2, "QuestionResponse", "2 + 2 = ?", correctAnswers, 2);
 
         assertNotEquals("2+2=?", question.getQuestion());
         assertEquals(2, question.getScore("Four"));
@@ -55,14 +55,14 @@ public class QuestionResponseTest {
         secondCorrectAnswers.add("doe");
         secondCorrectAnswers.add("Maria Dolores dosSantos Aveiro ");
 
-        QuestionResponse firstQuestion = new QuestionResponse(3, 1, "Jude bellingham is ", firstCorrectAnswers, 9);
-        QuestionResponse secondQuestion = new QuestionResponse(4, 1, "What is the name of the goat’s mother?", secondCorrectAnswers, 9);
+        QuestionResponse firstQuestion = new QuestionResponse(3, "QuestionResponse", "Jude bellingham is ", firstCorrectAnswers, 9);
+        QuestionResponse secondQuestion = new QuestionResponse(4, "QuestionResponse", "What is the name of the goat’s mother?", secondCorrectAnswers, 9);
 
         assertEquals(0, secondQuestion.getScore("Nigger"));
         assertEquals(0, firstQuestion.getScore("Best central midfielder"));
         assertEquals(9, secondQuestion.getScore("mariadoloresdossantosaveiro"));
 
-        assertEquals(firstQuestion.getQuestionTypeId(),secondQuestion.getQuestionTypeId());
+        assertEquals(firstQuestion.getQuestionType(),secondQuestion.getQuestionType());
         assertNotEquals(firstQuestion.getId(),secondQuestion.getId());
     }
 
@@ -73,12 +73,12 @@ public class QuestionResponseTest {
     @Test
     void testEmptyOrNullQuestionException() {
         IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class, () -> {
-            new QuestionResponse(1, 1, null, new HashSet<>(Collections.singletonList("answer")), 5);
+            new QuestionResponse(1, "QuestionResponse", null, new HashSet<>(Collections.singletonList("answer")), 5);
         });
         assertEquals("Question text must not be null or empty.", ex1.getMessage());
 
         IllegalArgumentException ex2 = assertThrows(IllegalArgumentException.class, () -> {
-            new QuestionResponse(1, 1, "   ", new HashSet<>(Collections.singletonList("answer")), 5);
+            new QuestionResponse(1, "QuestionResponse", "   ", new HashSet<>(Collections.singletonList("answer")), 5);
         });
         assertEquals("Question text must not be null or empty.", ex2.getMessage());
     }
@@ -90,21 +90,8 @@ public class QuestionResponseTest {
     @Test
     void testInvalidIdException() {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
-            new QuestionResponse(0, 1, "Valid question", new HashSet<>(Collections.singletonList("answer")), 5);
+            new QuestionResponse(0, "QuestionResponse", "Valid question", new HashSet<>(Collections.singletonList("answer")), 5);
         });
         assertEquals("ID must be a positive integer.", ex.getMessage());
     }
-
-    /**
-     * Tests that the constructor of QuestionResponse throws an IllegalArgumentException
-     * when the provided question type ID is zero or negative.
-     */
-    @Test
-    void testInvalidQuestionTypeIdException() {
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> {
-            new QuestionResponse(1, -1, "Valid question", new HashSet<>(Collections.singletonList("answer")), 5);
-        });
-        assertEquals("Question type ID must be a positive integer.", ex.getMessage());
-    }
-
 }

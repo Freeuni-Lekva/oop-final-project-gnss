@@ -20,7 +20,7 @@ public class MultipleChoiceAnswerTests extends TestCase {
         answers.add("A");
         answers.add("E");
 
-        mulChoiceQuestion = new MultipleChoiceAnswer(1, 3, question, answers, 4);
+        mulChoiceQuestion = new MultipleChoiceAnswer(1, "MultipleChoice", question, answers, 4);
     }
 
     // Test for checking selecting correct answer

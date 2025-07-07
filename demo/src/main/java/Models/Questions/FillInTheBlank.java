@@ -19,7 +19,7 @@ public class FillInTheBlank extends QuestionResponse{
      * @param maxScore         the maximum score a user can earn for a correct answer
      * @throws IllegalArgumentException if the question does not contain at least one blank ('_')
      */
-    public FillInTheBlank(int id, int question_type_id, String question, Set<String> correctAnswers, int maxScore) {
+    public FillInTheBlank(int id, String question_type_id, String question, Set<String> correctAnswers, int maxScore) {
         super(id, question_type_id, validateQuestion(question), correctAnswers, maxScore);
     }
 

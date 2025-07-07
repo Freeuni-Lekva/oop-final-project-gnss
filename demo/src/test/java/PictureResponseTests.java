@@ -13,7 +13,7 @@ public class PictureResponseTests extends TestCase {
         Set<String> answers = Set.of("Lincoln", "Abraham Lincoln");
         question = new PictureResponse(
                 1,
-                1,
+                "PictureResponse",
                 "Who's in the picture?",
                 answers,
                 "http://example.com/lincoln.jpg"
@@ -78,7 +78,7 @@ public class PictureResponseTests extends TestCase {
     // Checks constructor throws when null answers are given
     public void testConstructorWithNullAnswers() {
         try {
-            new PictureResponse(2, 1, "Test", null, "http://example.com/test.jpg");
+            new PictureResponse(2, "PictureResponse", "Test", null, "http://example.com/test.jpg");
             fail("Expected IllegalArgumentException for null answers");
         } catch (IllegalArgumentException e) {
             // pass
@@ -88,7 +88,7 @@ public class PictureResponseTests extends TestCase {
     // Checks constructor throws when empty answer set is given
     public void testConstructorWithEmptyAnswers() {
         try {
-            new PictureResponse(3, 1, "Test", Set.of(), "http://example.com/test.jpg");
+            new PictureResponse(3, "PictureResponse", "Test", Set.of(), "http://example.com/test.jpg");
             fail("Expected IllegalArgumentException for empty answers");
         } catch (IllegalArgumentException e) {
             // pass
@@ -98,7 +98,7 @@ public class PictureResponseTests extends TestCase {
     // Checks constructor throws when null URL is given
     public void testConstructorWithNullUrl() {
         try {
-            new PictureResponse(4, 1, "Test", Set.of("answer"), null);
+            new PictureResponse(4, "PictureResponse", "Test", Set.of("answer"), null);
             fail("Expected IllegalArgumentException for null URL");
         } catch (IllegalArgumentException e) {
             // pass
@@ -108,7 +108,7 @@ public class PictureResponseTests extends TestCase {
     // Checks constructor throws when empty URL is given
     public void testConstructorWithEmptyUrl() {
         try {
-            new PictureResponse(5, 1, "Test", Set.of("answer"), "");
+            new PictureResponse(5, "PictureResponse", "Test", Set.of("answer"), "");
             fail("Expected IllegalArgumentException for empty URL");
         } catch (IllegalArgumentException e) {
             // pass
@@ -118,7 +118,7 @@ public class PictureResponseTests extends TestCase {
     // Checks that ID and question type ID are correctly returned
     public void testGetIdAndQuestionTypeId() {
         assertEquals(1, question.getId());
-        assertEquals(1, question.getQuestionTypeId());
+        assertEquals("PictureResponse", question.getQuestionType());
     }
 
     // Checks score when answer has extra spaces and mixed casing
@@ -151,7 +151,7 @@ public class PictureResponseTests extends TestCase {
     // Checks equality of two PictureResponse objects with same content
     public void testQuestionObjectEquality() {
         Set<String> answers = Set.of("Lincoln", "Abraham Lincoln");
-        PictureResponse sameQuestion = new PictureResponse(1, 1, "Who's in the picture?", answers, "http://example.com/lincoln.jpg");
+        PictureResponse sameQuestion = new PictureResponse(1, "PictureResponse", "Who's in the picture?", answers, "http://example.com/lincoln.jpg");
         assertEquals(question.getQuestion(), sameQuestion.getQuestion());
         assertEquals(question.getPictureUrl(), sameQuestion.getPictureUrl());
         assertEquals(question.getCorrectAnswers(), sameQuestion.getCorrectAnswers());
@@ -165,7 +165,7 @@ public class PictureResponseTests extends TestCase {
     // Checks score behavior with accented characters and locale differences
     public void testScoreWithAnswerDifferentLocale() {
         Set<String> answers = Set.of("Café");
-        PictureResponse q = new PictureResponse(10, 1, "Name the place", answers, "http://example.com/cafe.jpg");
+        PictureResponse q = new PictureResponse(10, "PictureResponse", "Name the place", answers, "http://example.com/cafe.jpg");
         assertEquals(1, q.getScore("café"));      // same accent, lower case
         assertEquals(0, q.getScore("cafe"));      // missing accent, should fail
     }

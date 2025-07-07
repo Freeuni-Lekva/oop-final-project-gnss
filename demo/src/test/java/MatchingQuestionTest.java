@@ -21,7 +21,7 @@ public class MatchingQuestionTest {
      */
     @Test
     public void testAssertions() {
-        matchingQuestion = new MatchingQuestion(1, 1, "Match each item on the left" +
+        matchingQuestion = new MatchingQuestion(1, "MatchingQuestion", "Match each item on the left" +
                 " with the correct item on the right.", null, null, null);
 
         assertThrows(UnsupportedOperationException.class, () -> matchingQuestion.getScore("dummy"));
@@ -40,7 +40,7 @@ public class MatchingQuestionTest {
         correctMatches.put("Portugal", "Lisbon");
         correctMatches.put("Spain", "Madrid");
 
-        matchingQuestion = new MatchingQuestion(1, 1, "Match Countries with Capital cities", leftItems, rightItems, correctMatches);
+        matchingQuestion = new MatchingQuestion(1, "MatchingQuestion", "Match Countries with Capital cities", leftItems, rightItems, correctMatches);
 
         matchingQuestion.setLeftItems(leftItems);
         matchingQuestion.setRightItems(rightItems);
@@ -62,7 +62,7 @@ public class MatchingQuestionTest {
         correctMatches.put("Michael Jordan", "Basketball");
         correctMatches.put("Lionel messi", "Football");
 
-        matchingQuestion = new MatchingQuestion(1, 1, "Match Sportsmen to sport", leftItems, rightItems, correctMatches);
+        matchingQuestion = new MatchingQuestion(1, "MatchingQuestion", "Match Sportsmen to sport", leftItems, rightItems, correctMatches);
 
         assertEquals(0, matchingQuestion.getScore((Map<String, String>) null));
         assertEquals(1, matchingQuestion.getScore(new HashMap<String, String>() {{
@@ -77,7 +77,7 @@ public class MatchingQuestionTest {
      */
     @Test
     public void testGetters() {
-        matchingQuestion = new MatchingQuestion(1, 1, "Match each item on the left" +
+        matchingQuestion = new MatchingQuestion(1, "MatchingQuestion", "Match each item on the left" +
                 " with the correct item on the right.", null, null, null);
 
         assertNull(matchingQuestion.getCorrectMatches());

@@ -30,7 +30,7 @@ public class MultiAnswer extends Question {
      *                         (must be lowercased and trimmed prior to being passed in)
      * @throws IllegalArgumentException if correctAnswers is null or empty
      */
-    public MultiAnswer(int id, int question_type_id, String question, boolean sorted, List<Set<String>> correctAnswers) {
+    public MultiAnswer(int id, String question_type_id, String question, boolean sorted, List<Set<String>> correctAnswers) {
         super(id, question_type_id, question);
         if (correctAnswers == null || correctAnswers.isEmpty()) {
             throw new IllegalArgumentException("Correct answers must not be null or empty.");

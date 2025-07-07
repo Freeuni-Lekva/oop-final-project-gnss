@@ -19,7 +19,7 @@ public class QuestionResponse extends Question {
      * @param maxScore         the maximum score a user can earn for a correct answer
      */
 
-    public QuestionResponse(int id, int question_type_id, String question, Set<String> correctAnswers, int maxScore ){
+    public QuestionResponse(int id, String question_type_id, String question, Set<String> correctAnswers, int maxScore ){
         super(id,question_type_id,question);
         this.correctAnswers = correctAnswers;
         this.maxScore = maxScore;

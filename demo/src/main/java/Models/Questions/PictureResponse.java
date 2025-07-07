@@ -26,7 +26,7 @@ public class PictureResponse extends Question {
      * @throws IllegalArgumentException if correctAnswers is null or empty,
      *                                  or if pictureUrl is null or empty
      */
-    public PictureResponse(int id, int question_type_id, String question, Set<String> correctAnswers, String pictureUrl) {
+    public PictureResponse(int id, String question_type_id, String question, Set<String> correctAnswers, String pictureUrl) {
         super(id, question_type_id, question);
         if (correctAnswers == null || correctAnswers.isEmpty()) {
             throw new IllegalArgumentException("Correct answers must not be null or empty.");

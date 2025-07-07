@@ -22,7 +22,7 @@ public class MatchingQuestion extends Question {
      * @param rightItems     The list of items on the right side that should be matched to left items.
      * @param correctMatches A map of correct matches, where each key from leftItems maps to its correct rightItem.
      */
-    public MatchingQuestion(int id, int typeId, String question, List<String> leftItems, List<String> rightItems, Map<String, String> correctMatches) {
+    public MatchingQuestion(int id, String typeId, String question, List<String> leftItems, List<String> rightItems, Map<String, String> correctMatches) {
         super(id, typeId, question);
         this.correctMatches = correctMatches;
         this.leftItems = leftItems;
