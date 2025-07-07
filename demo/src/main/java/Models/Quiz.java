@@ -7,6 +7,8 @@ public class Quiz {
     private String creator;
     private long submissions;
     private String createdAt;
+    private boolean isRandomized;
+    private boolean isMultiplePage;
 
     // Getters and setters
     public long getId() { return id; }
@@ -27,4 +29,9 @@ public class Quiz {
     public String getCreatedAt() { return createdAt; }
     public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
 
+    public boolean isRandomized() { return isRandomized; }
+    public void setRandomized(boolean isRandomized) { this.isRandomized = isRandomized; }
+
+    public boolean isMultiplePage() { return isMultiplePage; }
+    public void setMultiplePage(boolean isMultiplePage) { this.isMultiplePage = isMultiplePage; }
 }

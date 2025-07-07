@@ -23,6 +23,8 @@ public class QuizDao {
                 quiz.setDescription(rs.getString("description"));
                 quiz.setCreator(rs.getString("creator"));
                 quiz.setCreatedAt(rs.getString("created_at"));
+                quiz.setRandomized(rs.getBoolean("randomized"));
+                quiz.setMultiplePage(rs.getBoolean("is_multiple_page"));
                 quizzes.add(quiz);
             }
         }
@@ -45,6 +47,8 @@ public class QuizDao {
                 quiz.setDescription(rs.getString("description"));
                 quiz.setCreator(rs.getString("creator"));
                 quiz.setSubmissions(rs.getLong("submissions_number"));
+                quiz.setRandomized(rs.getBoolean("randomized"));
+                quiz.setMultiplePage(rs.getBoolean("is_multiple_page"));
                 quizzes.add(quiz);
             }
         }
@@ -65,6 +69,8 @@ public class QuizDao {
                     quiz.setTitle(rs.getString("title"));
                     quiz.setDescription(rs.getString("description"));
                     quiz.setCreatedAt(rs.getString("created_at"));
+                    quiz.setRandomized(rs.getBoolean("randomized"));
+                    quiz.setMultiplePage(rs.getBoolean("is_multiple_page"));
                     quizzes.add(quiz);
                 }
             }
@@ -88,6 +94,8 @@ public class QuizDao {
                 quiz.setTitle(rs.getString("quiz_title"));
                 quiz.setDescription(rs.getString("description"));
                 quiz.setCreatedAt(rs.getString("created_at"));
+                quiz.setRandomized(rs.getBoolean("randomized"));
+                quiz.setMultiplePage(rs.getBoolean("is_multiple_page"));
                 quizzes.add(quiz);
             }
         }
@@ -98,21 +106,21 @@ public class QuizDao {
 
     public Quiz getQuizById(long quizId) throws SQLException {
         String sql = """
-SELECT q.quiz_id,
-       q.quiz_title,
-       q.description,
-       u.username AS creator,
-       q.created_at,
-       COALESCE(s.submissions_count, 0) AS submissions
-FROM quizzes q
-JOIN users u ON q.created_by = u.user_id
-LEFT JOIN (
-    SELECT quiz_id, COUNT(*) AS submissions_count
-    FROM submissions
-    GROUP BY quiz_id
-) s ON q.quiz_id = s.quiz_id
-WHERE q.quiz_id = ?
-""";
+            SELECT q.quiz_id,
+                   q.quiz_title,
+                   q.description,
+                   u.username AS creator,
+                   q.created_at,
+                   COALESCE(s.submissions_count, 0) AS submissions
+            FROM quizzes q
+            JOIN users u ON q.created_by = u.user_id
+            LEFT JOIN (
+                SELECT quiz_id, COUNT(*) AS submissions_count
+                FROM submissions
+                GROUP BY quiz_id
+            ) s ON q.quiz_id = s.quiz_id
+            WHERE q.quiz_id = ?
+        """;
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -128,6 +136,8 @@ WHERE q.quiz_id = ?
                     quiz.setCreator(rs.getString("creator"));
                     quiz.setCreatedAt(rs.getString("created_at"));
                     quiz.setSubmissions(rs.getLong("submissions"));
+                    quiz.setRandomized(rs.getBoolean("randomized"));
+                    quiz.setMultiplePage(rs.getBoolean("is_multiple_page"));
                     return quiz;
                 }
             }
