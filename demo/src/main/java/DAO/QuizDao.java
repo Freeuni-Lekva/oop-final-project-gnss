@@ -96,4 +96,29 @@ public class QuizDao {
     }
 
 
+    public Quiz getQuizById(long quizId) throws SQLException {
+        String sql = "SELECT quiz_id, quiz_title, description, created_by, " +
+                "randomized, is_multiple_page, immediate_correction, total_time_limit " +
+                "FROM quizzes WHERE quiz_id = ?";
+
+        Quiz quiz = null;
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setLong(1, quizId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                quiz = new Quiz();
+                quiz.setId(rs.getLong("quiz_id"));
+                quiz.setTitle(rs.getString("quiz_title"));
+                quiz.setDescription(rs.getString("description"));
+                quiz.setCreator(rs.getString("created_by"));
+                quiz.setSubmissions(rs.getLong("submissions_number"));
+                quiz.setCreatedAt(rs.getString("created_at"));
+            }
+        }
+        return quiz;
+    }
 }
