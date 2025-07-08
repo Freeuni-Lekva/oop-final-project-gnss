@@ -147,7 +147,7 @@
     </div>
     <div>
       <h3><%= takenPractice %></h3>
-      <p>Taken Practice Quizzes</p>
+      <p>Practice Quizzes</p>
     </div>
   </div>
 
