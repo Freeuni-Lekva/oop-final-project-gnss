@@ -1,5 +1,4 @@
 -- Enhanced Mock Data for Quiz Application
-
 -- USERS
 INSERT INTO users (username, email, hashed_password, salt_password, num_quizzes_created) VALUES
      ('Nestor_Dzadzamia', 'Nestor@gmail.com', '452928968d7f7fdc3ccadcb7219bf4c8ccfbd12c', '', 2),
@@ -14,85 +13,84 @@ INSERT INTO users (username, email, hashed_password, salt_password, num_quizzes_
 
 -- CATEGORIES
 INSERT INTO categories (category_name) VALUES
-       ('Sports'),
-       ('History'),
-       ('Math'),
-       ('Biology'),
-       ('Music'),
-       ('Movies'),
-       ('Technology'),
-       ('Literature'),
-       ('Geography'),
-       ('Space & Astronomy'),
-       ('Gaming'),
-       ('Culinary Arts');
+   ('Sports'),
+   ('History'),
+   ('Math'),
+   ('Biology'),
+   ('Music'),
+   ('Movies'),
+   ('Technology'),
+   ('Literature'),
+   ('Geography'),
+   ('Space & Astronomy'),
+   ('Gaming'),
+   ('Culinary Arts');
 
 -- QUIZZES
 INSERT INTO quizzes (quiz_title, description, created_by, randomized, is_multiple_page, immediate_correction, allow_practice, quiz_category, total_time_limit) VALUES
-       -- Existing quizzes
-       ('Guess Georgian athletes', 'Show how well you know Georgian sportsmen', 1, FALSE, FALSE, FALSE, FALSE, 1, 20),
-       ('History of Georgia', 'Show your knowledge of Georgian history', 2, TRUE, TRUE, TRUE, TRUE, 2, 20),
-       ('Math Genius', 'Test your skills with challenging math problems!', 3, TRUE, FALSE, TRUE, TRUE, 3, 25),
-       ('Biology Facts', 'Explore the wonders of life science with this quiz.', 4, FALSE, TRUE, FALSE, TRUE, 4, 15),
-       ('Music Legends', 'See how much you know about world-famous musicians and bands.', 1, TRUE, FALSE, FALSE, TRUE, 5, 20),
-       ('Famous Movies', 'Guess the movie from its plot and quotes!', 2, TRUE, TRUE, FALSE, FALSE, 6, 20),
-       -- New high-quality quizzes
-       ('Programming Fundamentals', 'Test your knowledge of programming languages, algorithms, and software development', 5, FALSE, FALSE, TRUE, TRUE, 7, 30),
-       ('Tech Giants & Innovation', 'Explore the world of technology companies and groundbreaking innovations', 5, TRUE, FALSE, FALSE, TRUE, 7, 25),
-       ('World Literature Classics', 'Journey through the greatest works of literature from around the globe', 6, FALSE, TRUE, TRUE, TRUE, 8, 35),
-       ('Modern Poetry & Authors', 'Discover contemporary literature and influential modern writers', 6, TRUE, FALSE, FALSE, TRUE, 8, 20),
-       -- Quiz 17: General Knowledge Mix (quiz with unordered questions)
-       ('General Knowledge Mix', 'Test your knowledge across various topics - order doesn\'t matter!', 5, FALSE, FALSE, TRUE, TRUE, 1, 20);
+   ('Guess Georgian athletes', 'Show how well you know Georgian sportsmen', 1, FALSE, FALSE, FALSE, FALSE, 1, 20),
+   ('History of Georgia', 'Show your knowledge of Georgian history', 2, TRUE, TRUE, TRUE, TRUE, 2, 20),
+   ('Math Genius', 'Test your skills with challenging math problems!', 3, TRUE, FALSE, TRUE, TRUE, 3, 25),
+   ('Biology Facts', 'Explore the wonders of life science with this quiz.', 4, FALSE, TRUE, FALSE, TRUE, 4, 15),
+   ('Music Legends', 'See how much you know about world-famous musicians and bands.', 1, TRUE, FALSE, FALSE, TRUE, 5, 20),
+   ('Famous Movies', 'Guess the movie from its plot and quotes!', 2, TRUE, TRUE, FALSE, FALSE, 6, 20),
+   ('Programming Fundamentals', 'Test your knowledge of programming languages, algorithms, and software development', 5, FALSE, FALSE, TRUE, TRUE, 7, 30),
+   ('Tech Giants & Innovation', 'Explore the world of technology companies and groundbreaking innovations', 5, TRUE, FALSE, FALSE, TRUE, 7, 25),
+   ('World Literature Classics', 'Journey through the greatest works of literature from around the globe', 6, FALSE, TRUE, TRUE, TRUE, 8, 35),
+   ('Modern Poetry & Authors', 'Discover contemporary literature and influential modern writers', 6, TRUE, FALSE, FALSE, TRUE, 8, 20),
+   -- Quiz 17: General Knowledge Mix (new quiz with unordered questions)
+   ('General Knowledge Mix', 'Test your knowledge across various topics - order doesn\'t matter!', 5, FALSE, FALSE, TRUE, TRUE, 1, 20);
 
--- QUESTIONS for new quizzes (questions 37-60, 97-102)
+-- QUESTIONS(questions 37-60, 97-102)
+-- Question types: question-response, fill-blank, multiple-choice, picture-response, multi-answer, multiple-multiple-choice, matching
 
 -- Programming Fundamentals (quiz_id = 7, questions 37-42)
 INSERT INTO questions (quiz_id, question_type, question_text, image_url, time_limit, question_order) VALUES
-     (7, '2', 'Python is a _ programming language known for its simplicity.', NULL, 60, 1),
-     (7, '1', 'What does HTML stand for?', NULL, 60, 2),
-     (7, '3', 'Which of these is NOT a programming language?', NULL, 60, 3),
-     (7, '4', 'Identify the programming language logo shown in the image.', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg', 60, 4),
-     (7, '5', 'List three popular web development frameworks.', NULL, 60, 5),
-     (7, '6', 'Select all object-oriented programming languages.', NULL, 60, 6);
+     (7, 'fill-blank', 'Python is a _ programming language known for its simplicity.', NULL, 60, 1),
+     (7, 'question-response', 'What does HTML stand for?', NULL, 60, 2),
+     (7, 'multiple-choice', 'Which of these is NOT a programming language?', NULL, 60, 3),
+     (7, 'picture-response', 'Identify the programming language logo shown in the image.', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg', 60, 4),
+     (7, 'multi-answer', 'List three popular web development frameworks.', NULL, 60, 5),
+     (7, 'multiple-multiple-choice', 'Select all object-oriented programming languages.', NULL, 60, 6);
 
 -- Tech Giants & Innovation (quiz_id = 8, questions 43-48)
 INSERT INTO questions (quiz_id, question_type, question_text, image_url, time_limit, question_order) VALUES
-     (8, '7', 'Match each tech company to its founder.', NULL, 90, 1),
-     (8, '5', 'Name the first three versions of the iPhone operating system.', NULL, 90, 2),
-     (8, '3', 'Which company developed the first commercial microprocessor?', NULL, 90, 3),
-     (8, '4', 'Which tech company logo is shown in this image?', 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg', 90, 4),
-     (8, '1', 'What year was Google founded?', NULL, 90, 5),
-     (8, '2', 'The World Wide Web was invented by _ at CERN.', NULL, 90, 6);
+     (8, 'matching', 'Match each tech company to its founder.', NULL, 90, 1),
+     (8, 'multi-answer', 'Name the first three versions of the iPhone operating system.', NULL, 90, 2),
+     (8, 'multiple-choice', 'Which company developed the first commercial microprocessor?', NULL, 90, 3),
+     (8, 'picture-response', 'Which tech company logo is shown in this image?', 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg', 90, 4),
+     (8, 'question-response', 'What year was Google founded?', NULL, 90, 5),
+     (8, 'fill-blank', 'The World Wide Web was invented by _ at CERN.', NULL, 90, 6);
 
 -- World Literature Classics (quiz_id = 9, questions 49-54)
 INSERT INTO questions (quiz_id, question_type, question_text, image_url, time_limit, question_order) VALUES
-     (9, '7', 'Match each classic novel to its author.', NULL, 120, 1),
-     (9, '1', 'In which Shakespeare play does the character Hamlet appear?', NULL, 120, 2),
-     (9, '3', 'Which novel begins with "It was the best of times, it was the worst of times"?', NULL, 120, 3),
-     (9, '4', 'Who is the author shown in this portrait?', 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Charles_Dickens_-_Project_Gutenberg_eText_13103.jpg', 120, 4),
-     (9, '2', 'George Orwell wrote the dystopian novel "_" published in 1949.', NULL, 120, 5),
-     (9, '6', 'Select all novels written by Jane Austen.', NULL, 120, 6);
+     (9, 'matching', 'Match each classic novel to its author.', NULL, 120, 1),
+     (9, 'question-response', 'In which Shakespeare play does the character Hamlet appear?', NULL, 120, 2),
+     (9, 'multiple-choice', 'Which novel begins with "It was the best of times, it was the worst of times"?', NULL, 120, 3),
+     (9, 'picture-response', 'Who is the author shown in this portrait?', 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Charles_Dickens_-_Project_Gutenberg_eText_13103.jpg', 120, 4),
+     (9, 'fill-blank', 'George Orwell wrote the dystopian novel "_" published in 1949.', NULL, 120, 5),
+     (9, 'multiple-multiple-choice', 'Select all novels written by Jane Austen.', NULL, 120, 6);
 
 -- Modern Poetry & Authors (quiz_id = 10, questions 55-60)
 INSERT INTO questions (quiz_id, question_type, question_text, image_url, time_limit, question_order) VALUES
-     (10, '1', 'Who wrote the poem "The Road Not Taken"?', NULL, 90, 1),
-     (10, '2', 'Maya Angelou is famous for her autobiography "I Know Why the _ Bird Sings".', NULL, 90, 2),
-     (10, '3', 'Which poet is known as the "Bard of Avon"?', NULL, 90, 3),
-     (10, '7', 'Match each poet to their most famous work.', NULL, 90, 4),
-     (10, '5', 'Name three Beat Generation poets.', NULL, 90, 5),
-     (10, '4', 'Which famous poet is shown in this photograph?', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Langston_Hughes_by_Carl_Van_Vechten_1936.jpg', 90, 6);
+     (10, 'question-response', 'Who wrote the poem "The Road Not Taken"?', NULL, 90, 1),
+     (10, 'fill-blank', 'Maya Angelou is famous for her autobiography "I Know Why the _ Bird Sings".', NULL, 90, 2),
+     (10, 'multiple-choice', 'Which poet is known as the "Bard of Avon"?', NULL, 90, 3),
+     (10, 'matching', 'Match each poet to their most famous work.', NULL, 90, 4),
+     (10, 'multi-answer', 'Name three Beat Generation poets.', NULL, 90, 5),
+     (10, 'picture-response', 'Which famous poet is shown in this photograph?', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Langston_Hughes_by_Carl_Van_Vechten_1936.jpg', 90, 6);
 
 -- Add unordered multi-answer questions to Quiz 17 (questions 97-102)
 INSERT INTO questions (quiz_id, question_type, question_text, image_url, time_limit, question_order) VALUES
-     (17, '5', 'Name any 4 planets in our solar system.', NULL, 90, 1),
-     (17, '5', 'List any 3 programming languages you know.', NULL, 90, 2),
-     (17, '5', 'Name any 5 European countries.', NULL, 90, 3),
-     (17, '5', 'List any 3 colors of the rainbow.', NULL, 90, 4),
-     (17, '5', 'Name any 4 types of cuisine.', NULL, 90, 5),
-     (17, '1', 'What is the capital of France?', NULL, 90, 6);
+     (17, 'multi-answer', 'Name any 4 planets in our solar system.', NULL, 90, 1),
+     (17, 'multi-answer', 'List any 3 programming languages you know.', NULL, 90, 2),
+     (17, 'multi-answer', 'Name any 5 European countries.', NULL, 90, 3),
+     (17, 'multi-answer', 'List any 3 colors of the rainbow.', NULL, 90, 4),
+     (17, 'multi-answer', 'Name any 4 types of cuisine.', NULL, 90, 5),
+     (17, 'question-response', 'What is the capital of France?', NULL, 90, 6);
 
 
--- CORRECT ANSWERS for new quizzes
+-- CORRECT ANSWERS
 
 -- Programming Fundamentals (questions 37-42)
 INSERT INTO correct_answers (question_id, answer_text, match_order) VALUES
@@ -355,7 +353,7 @@ INSERT INTO friend_requests (sender_id, receiver_id, status) VALUES
      (1, 5, 'accepted'),
      (3, 6, 'accepted');
 
--- FRIENDSHIPS (based on accepted friend requests)
+-- FRIENDSHIPS
 INSERT INTO friendships (user_id1, user_id2) VALUES
      (1, 2), -- Nestor & Sandro
      (3, 4), -- Saba & Giorgi
@@ -368,30 +366,30 @@ INSERT INTO friendships (user_id1, user_id2) VALUES
 
 -- SAMPLE SUBMISSIONS
 INSERT INTO submissions (user_id, quiz_id, num_correct_answers, num_total_answers, score, time_spent) VALUES
-      -- Various users taking different quizzes with realistic scores
-      (1, 7, 5, 6, 83, 420),  -- Nestor: Programming quiz
-      (2, 9, 4, 6, 67, 680),  -- Sandro: Literature quiz
-      (5, 7, 6, 6, 100, 380),  -- Alex: Programming quiz (perfect score)
-      (5, 8, 5, 6, 83, 450),   -- Alex: Tech Giants quiz
-      (6, 9, 5, 6, 83, 720),   -- Maria: Literature quiz
-      (6, 10, 4, 6, 67, 610),  -- Maria: Poetry quiz
-      (1, 1, 5, 6, 83, 450),   -- Nestor: Georgian athletes
-      (2, 2, 4, 6, 67, 620);   -- Sandro: Georgian history
+  -- Various users taking different quizzes with realistic scores
+  (1, 7, 5, 6, 83, 420),  -- Nestor: Programming quiz
+  (2, 9, 4, 6, 67, 680),  -- Sandro: Literature quiz
+  (5, 7, 6, 6, 100, 380),  -- Alex: Programming quiz (perfect score)
+  (5, 8, 5, 6, 83, 450),   -- Alex: Tech Giants quiz
+  (6, 9, 5, 6, 83, 720),   -- Maria: Literature quiz
+  (6, 10, 4, 6, 67, 610),  -- Maria: Poetry quiz
+  (1, 1, 5, 6, 83, 450),   -- Nestor: Georgian athletes
+  (2, 2, 4, 6, 67, 620);   -- Sandro: Georgian history
 
 -- SAMPLE USER ANSWERS
 INSERT INTO user_answers (submission_id, question_id, answer_text, is_correct) VALUES
-       -- Sample answers for some submissions
-       (1, 37, 'high-level', TRUE),
-       (1, 38, 'HyperText Markup Language', TRUE),
-       (1, 39, 'Java', FALSE),
-       (1, 40, 'Python', TRUE),
-       (1, 41, 'React, Django, Vue.js', TRUE),
-       (1, 42, 'Java,Python,C++', FALSE);
+   -- Sample answers for some submissions
+   (1, 37, 'high-level', TRUE),
+   (1, 38, 'HyperText Markup Language', TRUE),
+   (1, 39, 'Java', FALSE),
+   (1, 40, 'Python', TRUE),
+   (1, 41, 'React, Django, Vue.js', TRUE),
+   (1, 42, 'Java,Python,C++', FALSE);
 
 -- MESSAGES
 INSERT INTO messages (sender_id, receiver_id, message_type, content, quiz_id, is_read) VALUES
-       (1, 2, 'challenge', 'challenged you to take "Programming Fundamentals"! My best score: 83', 7, FALSE),
-       (5, 1, 'note', 'Great job on the programming quiz! You really know your stuff.', NULL, TRUE),
-       (6, 3, 'challenge', 'challenged you to take "World Literature Classics"! My best score: 83', 9, FALSE),
-       (7, 8, 'note', 'Hey Emma, hope you are doing well!', NULL, TRUE),
-       (8, 7, 'note', 'Thanks for checking in! Hope to see you soon.', NULL, TRUE);
+   (1, 2, 'challenge', 'challenged you to take "Programming Fundamentals"! My best score: 83', 7, FALSE),
+   (5, 1, 'note', 'Great job on the programming quiz! You really know your stuff.', NULL, TRUE),
+   (6, 3, 'challenge', 'challenged you to take "World Literature Classics"! My best score: 83', 9, FALSE),
+   (7, 8, 'note', 'Hey Emma, hope you are doing well!', NULL, TRUE),
+   (8, 7, 'note', 'Thanks for checking in! Hope to see you soon.', NULL, TRUE);
